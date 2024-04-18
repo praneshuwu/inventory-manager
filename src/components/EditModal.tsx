@@ -17,6 +17,7 @@ const EditModal = (props: ModalProps): JSX.Element => {
 
   const onSubmit = (id: number, updatedItem: InventoryItemType) => {
     props.submitHandler(id, updatedItem);
+    props.setOpenModal(false);
     setValues({ name: '', category: '', value: '', price: '', quantity: 0, isDisabled: false, id: 0 });
 
   };
@@ -65,7 +66,7 @@ const EditModal = (props: ModalProps): JSX.Element => {
               <button className="text-white inline-flex items-center focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-gray-500 hover:bg-gray-600 focus:ring-gray-600" onClick={() => { onCancel(); }}>
                 Cancel
               </button>
-              <button onClick={() => onSubmit(props.item.id, { ...values, price: `$${values['price']}`, value: `$${values['value']}`, id: props.item.id, isDisabled: props.item.isDisabled, name: props.item.name })} disabled={!saveButtonActive} className={`text-white inline-flex items-center focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ${saveButtonActive ? 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-800' : ' bg-gray-600 cursor-not-allowed'}`}>
+              <button onClick={() => onSubmit(props.item.id, { ...values, price: `$${values['price']}`, value: `$${values['value']}`, id: props.item.id, isDisabled: props.item.isDisabled, name: props.item.name })} disabled={!saveButtonActive} className={`text-white inline-flex items-center focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ${saveButtonActive ? 'bg-green-700 hover:bg-green-600 focus:ring-green-600' : ' bg-gray-600 cursor-not-allowed'}`}>
                 Save
               </button>
             </div>
