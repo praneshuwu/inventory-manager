@@ -12,22 +12,22 @@ const useForm = (item:InventoryItemType) => {
 
   
 
-  // const validate = (name: string, value: string | number) => {
-  //   switch (name) {
-  //     case 'category':
-  //       if (value.toString().trim().length < 3) {
-  //         setErrors({
-  //           ...errors,
-  //           category: 'Category must have at least 3 characters',
-  //         });
-  //       } else {
-  //         setErrors({ ...errors, category: null });
-  //       }
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
+  const validate = (name: string, value: string | number) => {
+    switch (name) {
+      case 'category':
+        if (!value.toString().trim().match(/([A-Z|a-z])/g)) {
+          setErrors({
+            ...errors,
+            category: 'Please enter a valid category',
+          });
+        } else {
+          setErrors({ ...errors, category: null });
+        }
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleChange = (event: any) => {
     //To stop default events
@@ -36,7 +36,7 @@ const useForm = (item:InventoryItemType) => {
     let name = event.target.name;
     let value = event.target.value;
 
-    // validate(name, value);
+    validate(name, value);
 
     setValues({
       ...values,
