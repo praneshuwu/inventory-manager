@@ -1,0 +1,109 @@
+/* Override bootstrap */
+
+.form-check-input {
+  background-color: #666 !important;
+  border-color: #6668 !important;
+  background-image: url('data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27><circle r=%273%27 fill=%27%23fff%27/></svg>') !important;
+}
+.form-check-input:checked {
+
+  background-color: #fff !important;
+  border-color: rgba(220, 220, 220, 0.533) !important;
+  background-image: url('data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-4 -4 8 8%27><circle r=%273%27 fill=%27%23666%27/></svg>') !important;
+}
+
+.form-check-input:focus {
+  border-color: #6668 !important;
+  outline: 0;
+  box-shadow: none !important;
+}
+
+
+#user-role-switch {
+  cursor: pointer;
+}
+
+
+/* Custom switch */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body{
+	background: #f3f6f9;
+}
+
+.wrapper{
+	max-width: 50px;
+	width: 100%;
+	margin: 10px auto 0;
+	background: #fff;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.checkbox_item .checkbox_wrap{
+	position: relative;
+	display: block;
+	cursor: pointer;
+	width: 50px;
+}
+
+.checkbox_item:last-child .checkbox_wrap{
+	margin-bottom: 0;
+}
+
+.checkbox_item .checkbox_wrap .checkbox_inp{
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: 1;
+}
+
+.checkbox_item .checkbox_wrap .checkbox_mark{
+	display: inline-block;
+	position: relative;
+	border-radius: 25px;
+}
+
+.checkbox_item .checkbox_wrap .checkbox_mark:before,
+.checkbox_item .checkbox_wrap .checkbox_mark:after{
+	content: "";
+	position: absolute;
+	transition: all 0.5s ease;
+}
+
+
+.checkbox_item.citem_2 .checkbox_wrap .checkbox_mark{
+  border: 2px solid rgb(34 197 94);
+	width: 40px;
+	height: 20px;
+	padding: 2px;
+}
+
+.checkbox_item.citem_2 .checkbox_wrap .checkbox_mark:before{
+	top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    background: rgb(34 197 94);
+    border-radius: 25px;
+}
+
+.checkbox_item.citem_2 .checkbox_wrap .checkbox_inp:checked ~ .checkbox_mark{
+	border-color: #f0f0f0;
+}
+
+.checkbox_item.citem_2 .checkbox_wrap .checkbox_inp:checked ~ .checkbox_mark:before{
+	left: 22px;
+  background: #f0f0f0;
+}
+
