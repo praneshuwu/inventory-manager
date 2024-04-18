@@ -13,17 +13,18 @@ const EditModal = (props: ModalProps): JSX.Element => {
   const { handleChange, values, errors, setValues } = useForm(props.item);
 
   // 
-  let saveButtonActive = values !== props.item && !errors.category && values.category.length !==0 && values.price.length !==0 && values.value.length !==0;
+  let saveButtonActive = values !== props.item && !errors.category && values.category.length !== 0 && values.price.length !== 0 && values.value.length !== 0;
 
   const onSubmit = (id: number, updatedItem: InventoryItemType) => {
     props.submitHandler(id, updatedItem);
     props.setOpenModal(false);
     setValues(updatedItem);
+    setValues({ category: '', name: '', price: '', value: '', quantity: 0, isDisabled: false, id: 0 });
   };
 
   const onCancel = () => {
     props.setOpenModal(false);
-    setValues(props.item);
+    setValues({ category: '', name: '', price: '', value: '', quantity: 0, isDisabled: false, id: 0 });
   };
 
   return (
@@ -53,7 +54,7 @@ const EditModal = (props: ModalProps): JSX.Element => {
               <div className="col-span-2 sm:col-span-1">
                 <label htmlFor="price" className="block mb-2 text-sm font-medium text-white">Price</label>
                 <input
-                  value={values.price}
+                  value={values.price.replace(/[$]/g,'')}
                   onChange={handleChange} type="number" name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder={`${props.item?.price}`} />
               </div>
               <div className="col-span-2 sm:col-span-1">
@@ -65,8 +66,8 @@ const EditModal = (props: ModalProps): JSX.Element => {
               <div className="col-span-2 sm:col-span-1">
                 <label htmlFor="value" className="block mb-2 text-sm font-medium text-white">value</label>
                 <input
-                  value={values.value}
-                  onChange={handleChange} type="value" name="value" id="value" className="border text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500" placeholder={`${props.item?.value}`} />
+                  value={values.value.replace(/[$]/g,'')}
+                  onChange={handleChange} type="number" name="value" id="value" className="border text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white focus:ring-primary-500 focus:border-primary-500" placeholder={`${props.item?.value}`} />
               </div>
             </div>
             <div className='flex justify-end gap-3'>

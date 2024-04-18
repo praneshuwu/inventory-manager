@@ -10,7 +10,7 @@ export function getInventoryStats(data:InventoryItem[],dispatch?:Dispatch){
     if(categories.indexOf(item.category) == -1){
       categories.push(item.category)
     }
-    totalValue += item.value.length > 1 && item.value.includes('$') ? parseInt(item.value.slice(1)) : parseInt(item.value)
+    totalValue += item.value.length > 1 && item.value.includes('$') ? parseInt(item.value.replace(/[$]/g,'')) : parseInt(item.value)
     if(item.quantity == 0){
       outOfStocks += 1
     }
